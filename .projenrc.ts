@@ -1,23 +1,16 @@
-import { typescript } from 'projen';
+import { typescript, javascript } from 'projen';
 
 const project = new typescript.TypeScriptProject({
   name: 'sports-tracker',
   defaultReleaseBranch: 'main',
   projenrcTs: true,
-  packageManager: typescript.NodePackageManager.NPM,
-
-  // Monorepo configuration
-  workspaces: [
-    'packages/*',
-  ],
+  packageManager: javascript.NodePackageManager.NPM,
 
   devDeps: [
     'projen',
   ],
 
   gitignore: [
-    '*.js',
-    '*.d.ts',
     'node_modules/',
     'dist/',
     'lib/',
@@ -33,7 +26,7 @@ const project = new typescript.TypeScriptProject({
     '.pytest_cache/',
     'models/*.pth',
     'models/*.pt',
-    '!.projenrc.ts',
+    'coverage/',
   ],
 
   scripts: {
@@ -42,6 +35,13 @@ const project = new typescript.TypeScriptProject({
     'deploy:infra': 'npm run deploy --workspace=@sports-tracker/infra',
     'dev:frontend': 'npm run dev --workspace=@sports-tracker/frontend',
   },
+  
+  // Don't create sample code since we're building a monorepo
+  sampleCode: false,
 });
+
+// Add workspaces to package.json for monorepo structure
+project.package.addField('workspaces', ['packages/*']);
+project.package.addField('private', true);
 
 project.synth();

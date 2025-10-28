@@ -1,0 +1,11 @@
+{
+  "name": "@sports-tracker/ml-ball-tracking",
+  "version": "0.0.1",
+  "description": "ML model for ball tracking in sports videos",
+  "private": true,
+  "scripts": {
+    "train": "python src/train.py",
+    "test": "pytest tests/",
+    "install": "pip install -r requirements.txt"
+  }
+}
