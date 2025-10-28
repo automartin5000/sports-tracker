@@ -6,9 +6,15 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
     
     steps:
       - uses: actions/checkout@v4
@@ -46,6 +52,9 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
     
     steps:
       - uses: actions/checkout@v4

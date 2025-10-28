@@ -31,13 +31,13 @@
   }
   
   h1 {
-    color: #333;
+    color: #1a1a1a;
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
   }
   
   h2 {
-    color: #555;
+    color: #2d2d2d;
     font-size: 1.5rem;
     margin-top: 2rem;
   }
