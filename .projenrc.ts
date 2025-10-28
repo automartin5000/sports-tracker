@@ -35,7 +35,7 @@ const project = new typescript.TypeScriptProject({
     'deploy:infra': 'npm run deploy --workspace=@sports-tracker/infra',
     'dev:frontend': 'npm run dev --workspace=@sports-tracker/frontend',
   },
-  
+
   // Don't create sample code since we're building a monorepo
   sampleCode: false,
 });
